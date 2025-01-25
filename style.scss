@@ -1,0 +1,214 @@
+// zmienne kolorów
+$primary-color: #007bff;
+$hover-color: #0056b3;
+$background-color: #bac2da;
+$text-color: #333;
+$container-bg: #fff;
+$input-border: #ccc;
+$error-color: #dc3545;
+$placeholder-color: #888;
+
+// font
+$font-family-primary: "Montserrat", sans-serif;
+$font-size-base: 16px;
+$font-weight-bold: 700;
+
+// odstępy
+$spacing-unit: 10px;
+$container-max-width: 600px;
+$border-radius: 8px;
+
+// cienie
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// animacje
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes checkbox-scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+// style
+body {
+  font-family: $font-family-primary;
+  background-color: $background-color;
+  margin: 0;
+  padding: $spacing-unit * 2;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  background: $container-bg;
+  padding: $spacing-unit * 2;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  // fade-in
+  opacity: 0;
+  animation: fade-in 0.8s ease-in-out forwards;
+}
+
+h1 {
+  text-align: center;
+  color: $text-color;
+}
+
+// formularz
+.form-group {
+  margin-bottom: $spacing-unit * 1.5;
+}
+
+label {
+  display: block;
+  margin-bottom: $spacing-unit / 2;
+  font-weight: $font-weight-bold;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+// efekty
+button {
+  display: block;
+  width: 100%;
+  padding: $spacing-unit * 1.5 $spacing-unit;
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: $font-size-base;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: $hover-color;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// style inputów
+input,
+select,
+textarea {
+  width: 100%;
+  padding: $spacing-unit * 1.2;
+  border: 1px solid $input-border;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 5px rgba($primary-color, 0.5);
+    outline: none;
+  }
+
+  // style placeholderów
+  &::placeholder {
+    color: $placeholder-color;
+    font-style: italic; // Opcjonalnie pochylony tekst
+  }
+}
+
+// style błędów
+input:invalid {
+  border-color: $error-color;
+  box-shadow: 0 0 5px rgba($error-color, 0.5);
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.875em;
+  margin-top: $spacing-unit / 2;
+}
+
+// style checkboxa i hovera
+.form-check {
+  display: flex;
+  align-items: center;
+
+  .form-check-input {
+    margin-right: $spacing-unit;
+    transition: all 0.3s ease;
+
+    &:checked {
+      transform: scale(1.2);
+      animation: checkbox-scale 0.2s ease-in-out;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .form-check-label {
+    margin: 0;
+    padding-top: 5px;
+  }
+}
+
+// responsywność
+@media (max-width: 768px) {
+  body {
+    padding: $spacing-unit;
+  }
+
+  .container {
+    padding: $spacing-unit;
+  }
+
+  h1 {
+    font-size: $font-size-base * 1.5;
+  }
+
+  button {
+    font-size: $font-size-base * 0.9;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: $spacing-unit / 2;
+  }
+
+  .container {
+    padding: $spacing-unit / 2;
+  }
+
+  h1 {
+    font-size: $font-size-base * 1.2;
+  }
+
+  button {
+    font-size: $font-size-base * 0.8;
+    padding: $spacing-unit $spacing-unit / 2;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: $font-size-base * 0.9;
+  }
+}
